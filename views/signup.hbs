@@ -3,16 +3,6 @@
 </head>
 <body>
   {{> navbar}}
-  <div id='userValidation'>
-    <form action='/signup' method='POST'>
-      <div id='names'>
-        <input type='text' placeholder='First name' name='firstName'/>
-        <input type='text' placeholder='Last name' name='lastName'/></br>
-      </div>
-      <input type='email' placeholder='Email' name='email'/></br>
-      <input type='password' placeholder='Password' name='password'/></br>
-      <button type='submit'>Sign up</button>
-    </form>
-  </div>
+  {{> signupform}}
 </body>
 {{> HTMLFooter}}
