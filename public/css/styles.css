@@ -1,18 +1,17 @@
 * {
-  font-family: "Open Sans", sans-serif;
-  box-sizing: border-box; }
+  font-family: "Open Sans", sans-serif; }
 
 body {
-  background-color: #e9e9e9;
-  height: 1500px; }
+  background-color: #e9e9e9; }
 
+/* Navbar */
 .navbar {
   height: 50px;
-  background-color: #fff;
-  margin-bottom: 100px; }
+  margin-bottom: 0px;
+  background-color: #fff; }
   .navbar .container-fluid {
     padding: 0px;
-    max-width: 950px; }
+    max-width: 960px; }
   .navbar .navbar-header {
     max-width: 100px;
     min-width: 100px; }
@@ -45,89 +44,119 @@ body {
         background-color: #36c4af;
         border-color: #36c4af; }
 
+.first-div {
+  background-color: #e9e9e9;
+  padding: 20px 0px 52px 0px; }
+
+.second-div {
+  background-color: #fff;
+  height: 500px; }
+
+.third-div {
+  background-color: #e9e9e9;
+  height: 1000px; }
+
+.footer {
+  background-color: #d4d5d6;
+  height: 450px; }
+
+.legal {
+  background-color: #d4d5d6;
+  border-top: 1px solid #fff;
+  height: 50px; }
+
 .header-title {
   max-width: 944px;
   text-align: center;
-  margin: 0 auto; }
-  .header-title p {
+  margin: 0 auto;
+  margin-top: 90px; }
+  .header-title h1 {
     color: #2e4256;
-    font-size: 39px;
-    font-weight: 600px; }
+    font-size: 39px; }
 
 .divide-padding {
   margin: 0 auto;
-  height: 48px;
+  height: 100px;
   max-width: 944px; }
 
 .signupDiv {
   max-width: 944px;
-  padding-top: 50px; }
-  .signupDiv .signup-img-div {
-    padding: 50px 100px 150px 100px;
-    text-align: center;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none; }
-
-.form-signin {
   margin: 0 auto;
-  max-width: 300px; }
-  .form-signin .form-signin-heading {
-    text-align: center;
-    font-size: 19px;
-    color: #959595;
-    padding: 10px 20px 10px 20px; }
-  .form-signin .inputs {
-    width: 300px;
-    margin-bottom: 30px; }
-    .form-signin .inputs .btn {
-      border-radius: 0px;
-      border: 1px solid #818181;
-      cursor: text;
-      color: #2e4256;
-      text-align: left;
-      height: 50px;
-      font-size: 17px;
-      outline: none; }
-      .form-signin .inputs .btn:hover {
-        background-color: #fff; }
-  .form-signin .signup-btn {
-    background-color: #34b3a0;
-    border: none;
-    height: 50px;
-    font-size: 20px;
-    border-radius: 0px;
-    outline: none;
-    margin-bottom: 30px; }
-    .form-signin .signup-btn:hover {
-      background-color: #36c4af; }
-  .form-signin .social-btn {
-    margin-bottom: 5px;
-    font-size: 15px; }
-    .form-signin .social-btn .btn {
-      line-height: 20px;
-      text-align: left;
-      background-color: #fff;
+  padding-bottom: 29px; }
+  .signupDiv .signup-img-div {
+    padding: 60px 140px 150px 140px; }
+  .signupDiv .signup-form {
+    margin: 0 auto;
+    max-width: 300px; }
+    .signupDiv .signup-form .form-signin-heading {
+      text-align: center;
+      font-size: 19px;
+      color: #959595;
+      padding-bottom: 10px; }
+    .signupDiv .signup-form .btn-group-vertical {
+      width: 300px;
+      margin-bottom: 30px; }
+      .signupDiv .signup-form .btn-group-vertical .btn {
+        border: 1px solid #818181;
+        border-radius: 0px;
+        cursor: text;
+        color: #2e4256;
+        text-align: left;
+        height: 48px;
+        font-size: 17px;
+        outline: none; }
+        .signupDiv .signup-form .btn-group-vertical .btn:active {
+          box-shadow: 0px 0px 0px; }
+    .signupDiv .signup-form .signup-btn {
+      background-color: #34b3a0;
+      color: #fff;
       border: none;
-      color: #818181;
+      height: 50px;
+      font-size: 20px;
       border-radius: 0px;
-      width: 145px;
-      height: 40px;
-      box-shadow: 0px 1px 1px #888888; }
-      .form-signin .social-btn .btn:hover {
-        background-color: #e9e9e9; }
-      .form-signin .social-btn .btn span {
-        font-size: 20px;
-        padding-right: 5px; }
-      .form-signin .social-btn .btn .g-icon {
-        color: #d14437; }
-      .form-signin .social-btn .btn .fb-icon {
-        color: #43548d; }
-  .form-signin .ToS {
-    color: #2e4256;
-    font-size: 13.5px;
-    text-align: center; }
+      margin-bottom: 15px; }
+      .signupDiv .signup-form .signup-btn:hover {
+        background-color: #36c4af; }
+      .signupDiv .signup-form .signup-btn:active {
+        background-color: #07594d;
+        outline: none; }
+    .signupDiv .signup-form .social-btn {
+      margin: 30px 0px 5px 0px;
+      font-size: 15px; }
+      .signupDiv .signup-form .social-btn .btn {
+        line-height: 20px;
+        text-align: left;
+        background-color: #fff;
+        border: none;
+        color: #818181;
+        border-radius: 0px;
+        width: 145px;
+        height: 40px;
+        outline: none;
+        box-shadow: 0px 1px 1px #888888; }
+        .signupDiv .signup-form .social-btn .btn:hover {
+          background-color: #e9e9e9; }
+        .signupDiv .signup-form .social-btn .btn span {
+          font-size: 20px;
+          padding-right: 5px; }
+        .signupDiv .signup-form .social-btn .btn .g-icon {
+          color: #d14437; }
+        .signupDiv .signup-form .social-btn .btn .fb-icon {
+          color: #43548d; }
+    .signupDiv .signup-form .ToS {
+      color: #2e4256;
+      font-size: 13.5px;
+      text-align: center; }
+    .signupDiv .signup-form .socialLogin {
+      text-align: center;
+      font-weight: bold; }
+      .signupDiv .signup-form .socialLogin a {
+        color: #34b3a0; }
+    .signupDiv .signup-form .forgotPassword {
+      position: relative;
+      top: -10px;
+      text-align: center; }
+      .signupDiv .signup-form .forgotPassword a {
+        color: #34b3a0; }
 
 /*# sourceMappingURL=styles.css.map */

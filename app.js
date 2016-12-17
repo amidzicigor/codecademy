@@ -5,7 +5,6 @@ const _               = require('lodash');
 
 const {mongoose}      = require('./server/db/mongoose');
 const {User}          = require('./server/models/user');
-var {authenticate}    = require('./server/middleware/authenticate');
 
 const port = process.env.PORT || 3000;
 
@@ -21,37 +20,29 @@ app.use(express.static(__dirname + '/public'));
 
 // Get home page
 app.get('/', (req, res) => {
-  res.render('home.hbs', {
-    pageTitle: 'Home'
-  });
+  res.render('home.hbs');
 })
 
 // Get login page
 app.get('/login', (req, res) => {
-  res.render('login.hbs', {
-    pageTitle: 'Login'
-  });
+  res.render('login.hbs');
 })
 
 // Get signup page
 app.get('/signup', (req, res) => {
-  res.render('signup.hbs', {
-    pageTitle: 'Signup'
-  });
+  res.render('signup.hbs');
 })
 
 // -------------------------------------------------------------------------- //
 
 // Post signup page
 app.post('/signup', (req, res) => {
-  var body = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
+  var body = _.pick(req.body, ['email', 'username', 'password']);
   var user = new User(body);
 
   user.save().then(() => {
-    return user.generateAuthToken();
-  }).then((token) => {
-    res.header('x-auth', token).render('welcome.hbs', {
-      user: `${user.firstName} ${user.lastName}`
+    res.render('welcome.hbs', {
+      user: `${user.username}`
     })
   }).catch((e) => {
     res.status(400).send(`${e} ############# Please try again!`);
@@ -63,23 +54,13 @@ app.post('/login', (req, res) => {
   var body = _.pick(req.body, ['email', 'password']);
 
   User.findByCredentials(body.email, body.password).then((user) => {
-    return user.generateAuthToken().then((token) => {
-      res.header('x-auth', token).render('welcome.hbs', {
-        user: `${user.firstName} ${user.lastName}`
-      });
-    });
+    res.render('welcome.hbs', {
+      user: `${user.username}`
+    })
   }).catch((e) => {
-    res.status(400).send('Some error in user.js line 91');
+    res.status(400).send('Error');
   });
 });
-
-app.delete('/logout', authenticate, (req, res) => {
-  req.user.removeToken(req.token).then(() => {
-    res.status(200).send('Logged out');
-  }, () => {
-    res.status(400).send('Some error');
-  })
-})
 
 app.listen(port, () => {
   console.log(`Listening to port ${port}`);

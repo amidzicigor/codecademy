@@ -1,24 +1,10 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-const jwt = require('jsonwebtoken');
-const _ = require('lodash');
-const bcrypt = require('bcryptjs');
+const mongoose      = require('mongoose');
+const validator     = require('validator');
+const jwt           = require('jsonwebtoken');
+const _             = require('lodash');
+const bcrypt        = require('bcryptjs');
 
 var UserSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-    trim: true,
-    minLength: 1,
-    lowercase: true
-  },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true,
-    minLength: 1,
-    lowercase: true
-  },
   email: {
     type: String,
     required: true,
@@ -31,21 +17,19 @@ var UserSchema = new mongoose.Schema({
       message: '{VALUE} is not a valid email'
     }
   },
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 1,
+    lowercase: true,
+    unique: true
+  },
   password: {
     type: String,
     required: true,
     minlength: 6
-  },
-  tokens: [{
-    access: {
-      type: String,
-      required: true
-    },
-    token: {
-      type: String,
-      required: true
-    }
-  }]
+  }
 })
 
 UserSchema.methods.toJSON = function () {
@@ -54,48 +38,6 @@ UserSchema.methods.toJSON = function () {
 
   return _.pick(userObject, ['id', 'email']);
 }
-
-// Method for generating new auth token
-UserSchema.methods.generateAuthToken = function () {
-  var user = this;
-  var access = 'auth';
-  var token = jwt.sign({_id: user._id.toHexString(), access}, 'secretString').toString();
-
-  user.tokens.push({access, token});
-
-  return user.save().then(() => {
-    return token;
-  });
-};
-
-// Removing a token from user
-UserSchema.methods.removeToken = function (token) {
-  var user = this;
-
-  return user.update({
-    $pull: {
-      tokens: {token}
-    }
-  });
-};
-
-// Find user by token
-UserSchema.statics.findByToken = function (token) {
-  var User = this;
-  var decoded;
-
-  try {
-    decoded = jwt.verify(token, 'secretString');
-  } catch (e) {
-    return Promise.reject();
-  }
-
-  return User.findOne({
-    '_id': decoded._id,
-    'tokens.token': token,
-    'tokens.access': 'auth'
-  });
-};
 
 // Finding a user by email and matching hashed password
 UserSchema.statics.findByCredentials = function (email, password) {

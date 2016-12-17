@@ -4,19 +4,18 @@ $textColor: rgb(46, 66, 86)
 
 *
   font-family: 'Open Sans', sans-serif
-  box-sizing: border-box
 
 body
   background-color: rgb(233, 233, 233)
-  height: 1500px
 
+/* Navbar */
 .navbar
   height: 50px
+  margin-bottom: 0px
   background-color: #fff
-  margin-bottom: 100px
   .container-fluid
     padding: 0px
-    max-width: 950px
+    max-width: 960px
   .navbar-header
     max-width: 100px
     min-width: 100px
@@ -49,88 +48,117 @@ body
         background-color: $greenHover
         border-color: $greenHover
 
+.first-div
+  background-color: rgb(233, 233, 233)
+  padding: 20px 0px 52px 0px
+
+.second-div
+  background-color: #fff
+  height: 500px
+
+.third-div
+  background-color: rgb(233, 233, 233)
+  height: 1000px
+
+.footer
+  background-color: #d4d5d6
+  height: 450px
+
+.legal
+  background-color: #d4d5d6
+  border-top: 1px solid #fff
+  height: 50px
+
 .header-title
   max-width: 944px
   text-align: center
   margin: 0 auto
-  p
+  margin-top: 90px
+  h1
     color: $textColor
     font-size: 39px
-    font-weight: 600px
 
 .divide-padding
   margin: 0 auto
-  height: 48px
+  height: 100px
   max-width: 944px
 
 .signupDiv
   max-width: 944px
-  padding-top: 50px
-  .signup-img-div
-    padding: 50px 100px 150px 100px
-    text-align: center
-    user-select: none
-    -moz-user-select: none
-    -webkit-user-drag: none
-    -webkit-user-select: none
-    -ms-user-select: none
-
-// Sign up form
-.form-signin
   margin: 0 auto
-  max-width: 300px
-  .form-signin-heading
-    text-align: center
-    font-size: 19px
-    color: rgb(149, 149, 149)
-    padding: 10px 20px 10px 20px
-  .inputs
-    width: 300px
-    margin-bottom: 30px
-    .btn
-      border-radius: 0px
-      border: 1px solid rgb(129, 129, 129)
-      cursor: text
-      color: $textColor
-      text-align: left
-      height: 50px
-      font-size: 17px
-      outline: none
-      &:hover
-        background-color: #fff
-  .signup-btn
-    background-color: $green
-    border: none
-    height: 50px
-    font-size: 20px
-    border-radius: 0px
-    outline: none
-    margin-bottom: 30px
-    &:hover
-      background-color: $greenHover
-  .social-btn
-    margin-bottom: 5px
-    font-size: 15px
-    .btn
-      line-height: 20px
-      text-align: left
-      background-color: #fff
+  padding-bottom: 29px
+  .signup-img-div
+    padding: 60px 140px 150px 140px
+  .signup-form
+    margin: 0 auto
+    max-width: 300px
+    .form-signin-heading
+      text-align: center
+      font-size: 19px
+      color: rgb(149, 149, 149)
+      padding-bottom: 10px
+    .btn-group-vertical
+      width: 300px
+      margin-bottom: 30px
+      .btn
+        border: 1px solid rgb(129, 129, 129)
+        border-radius: 0px
+        cursor: text
+        color: $textColor
+        text-align: left
+        height: 48px
+        font-size: 17px
+        outline: none
+        &:active
+          box-shadow: 0px 0px 0px
+    .signup-btn
+      background-color: $green
+      color: #fff
       border: none
-      color: rgb(129, 129, 129)
+      height: 50px
+      font-size: 20px
       border-radius: 0px
-      width: 145px
-      height: 40px
-      box-shadow: 0px 1px 1px #888888
+      margin-bottom: 15px
       &:hover
-        background-color: rgb(233, 233, 233)
-      span
-        font-size: 20px
-        padding-right: 5px
-      .g-icon
-        color: rgb(209, 68, 55)
-      .fb-icon
-        color: rgb(67, 84, 141)
-  .ToS
-    color: $textColor
-    font-size: 13.5px
-    text-align: center
+        background-color: $greenHover
+      &:active
+        background-color: rgb(7, 89, 77)
+        outline: none
+    .social-btn
+      margin: 30px 0px 5px 0px
+      font-size: 15px
+      .btn
+        line-height: 20px
+        text-align: left
+        background-color: #fff
+        border: none
+        color: rgb(129, 129, 129)
+        border-radius: 0px
+        width: 145px
+        height: 40px
+        outline: none
+        box-shadow: 0px 1px 1px #888888
+        &:hover
+          background-color: rgb(233, 233, 233)
+        span
+          font-size: 20px
+          padding-right: 5px
+        .g-icon
+          color: rgb(209, 68, 55)
+        .fb-icon
+          color: rgb(67, 84, 141)
+    .ToS
+      color: $textColor
+      font-size: 13.5px
+      text-align: center
+    .socialLogin
+      text-align: center
+      font-weight: bold
+      a
+        color: $green
+    .forgotPassword
+      position: relative
+      top: -10px
+      text-align: center
+      a
+        color: $green
