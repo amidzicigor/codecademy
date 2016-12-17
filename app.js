@@ -42,14 +42,14 @@ app.get('/signup', (req, res) => {
 
 // Post signup page
 app.post('/signup', (req, res) => {
-  var body = _.pick(req.body, ['firstName', 'lastName', 'email', 'password']);
+  var body = _.pick(req.body, ['email', 'username', 'password']);
   var user = new User(body);
 
   user.save().then(() => {
     return user.generateAuthToken();
   }).then((token) => {
     res.header('x-auth', token).render('welcome.hbs', {
-      user: `${user.firstName} ${user.lastName}`
+      user: `${user.username}`
     })
   }).catch((e) => {
     res.status(400).send(`${e} ############# Please try again!`);
@@ -63,7 +63,7 @@ app.post('/login', (req, res) => {
   User.findByCredentials(body.email, body.password).then((user) => {
     return user.generateAuthToken().then((token) => {
       res.header('x-auth', token).render('welcome.hbs', {
-        user: `${user.firstName} ${user.lastName}`
+        user: `${user.username}`
       });
     });
   }).catch((e) => {
@@ -71,7 +71,7 @@ app.post('/login', (req, res) => {
   });
 });
 
-app.delete('/logout', authenticate, (req, res) => {
+app.post('/logout', authenticate, (req, res) => {
   req.user.removeToken(req.token).then(() => {
     res.status(200).send('Logged out');
   }, () => {

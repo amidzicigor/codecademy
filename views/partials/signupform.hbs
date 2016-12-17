@@ -1,12 +1,12 @@
 <!-- Right form -->
 <div class="signupDiv">
   <div class="signup-form">
-    <form class="form-signin">
+    <form class="form-signin" action="/signup" method="post">
       <h2 class="form-signin-heading">SIGN UP AND START CODING IN SECONDS</h2>
       <div class="btn-group-vertical">
-        <input class="btn" type="email" name="email" placeholder="Email">
-        <input class="btn" type="text" name="username" placeholder="Username">
-        <input class="btn" type="password" name="password" placeholder="Password">
+        <input class="btn" type="email" name="email" placeholder="Email" required>
+        <input class="btn" type="text" name="username" placeholder="Username" required>
+        <input class="btn" type="password" name="password" placeholder="Password" required>
       </div>
       <!-- Signup button -->
       <button class="signup-btn btn btn-block" type="submit">SIGN UP</button>
