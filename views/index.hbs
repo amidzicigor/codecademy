@@ -4,6 +4,12 @@
 <body>
   {{> navbar}}
 
+  <ol>
+    {{#each items}}
+      <li>{{ username }}</li>
+    {{/each}}
+  </ol>
+
   <div class="first-div container-fluid">
 
     <!-- Attention getter -->
