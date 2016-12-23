@@ -5,8 +5,10 @@ var {User} = require('../server/models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-  res.render('index');
+  if (!req.session.user) {
+    return res.render('index');
+  }
+  res.redirect('/learn');
 });
 
 /* GET signup page. */
@@ -17,6 +19,11 @@ router.get('/signup', function(req, res, next) {
 /* GET login page. */
 router.get('/login', function(req, res, next) {
   res.render('login');
+});
+
+/* GET learn page. */
+router.get('/learn', function(req, res, next) {
+  res.render('learn');
 });
 
 /* POST signup page. */
