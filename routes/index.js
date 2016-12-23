@@ -5,25 +5,37 @@ var {User} = require('../server/models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (!req.session.user) {
-    return res.render('index');
+  if (req.session.user) {
+    return res.redirect('/learn');
   }
-  res.redirect('/learn');
+  res.render('index');
 });
 
 /* GET signup page. */
 router.get('/signup', function(req, res, next) {
+  if (req.session.user) {
+    return res.redirect('/learn');
+  }
+
   res.render('signup');
 });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
+  if (req.session.user) {
+    return res.redirect('/learn');
+  }
+
   res.render('login');
 });
 
 /* GET learn page. */
 router.get('/learn', function(req, res, next) {
-  res.render('learn');
+  if (req.session.user) {
+    return res.render('learn', {loggedIn: true});
+  }
+
+  res.render('learn', {loggedIn: false});
 });
 
 /* POST signup page. */
@@ -35,8 +47,13 @@ router.post('/signup', function(req, res, next) {
   }
 
   var user = new User(item);
-  user.save();
-  res.redirect('/');
+  user.save().then(() => {
+    req.session.user = user;
+    res.redirect('/learn');
+  }).catch((e) => {
+    console.log(e);
+    res.redirect('/signup');
+  })
 });
 
 /* POST login page. */
@@ -45,60 +62,42 @@ router.post('/login', function(req, res, next) {
   var password = req.body.password;
 
   User.findOne({email: emailOrUser}).then(function (user) {
-    req.session.user = user;
-    res.redirect('/dashboard');
+    if (user.password === password) {
+      req.session.user = user;
+      res.redirect('/learn');
+    }
+    res.redirect('/login');
   }).catch((e) => {
     console.log(e);
     res.redirect('/login');
   })
 })
 
-router.get('/dashboard', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).send('You are not logged in!');
-  }
-
-  res.send('You are logged in!');
-})
-
-router.get('/logout', (req, res) => {
-  res.render('logout');
-})
-
+/* POST logout page. */
 router.post('/logout', (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).send('You are not logged in!');
-  }
-
   req.session.destroy();
-  res.redirect('/dashboard');
+  res.redirect('/');
 })
 
-router.get('/get-data', function(req, res, next) {
-  User.find().then(function (doc) {
-    res.render('index', {items: doc.email});
-  })
-});
-
-router.post('/update', function(req, res, next) {
-  var id = req.body.id;
-
-  User.findById(id, function (err, doc) {
-    if (err) {
-      console.log(err);
-    }
-    doc.title = req.body.title;
-    doc.content = req.body.content;
-    doc.author = req.body.author;
-    doc.save();
-  });
-  res.redirect('/');
-});
-
-router.post('/delete', function(req, res, next) {
-  var id = req.body.id;
-  User.findByIdAndRemove(id).exec();
-  res.redirect('/');
-});
+// router.post('/update', function(req, res, next) {
+//   var id = req.body.id;
+//
+//   User.findById(id, function (err, doc) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     doc.title = req.body.title;
+//     doc.content = req.body.content;
+//     doc.author = req.body.author;
+//     doc.save();
+//   });
+//   res.redirect('/');
+// });
+//
+// router.post('/delete', function(req, res, next) {
+//   var id = req.body.id;
+//   User.findByIdAndRemove(id).exec();
+//   res.redirect('/');
+// });
 
 module.exports = router;

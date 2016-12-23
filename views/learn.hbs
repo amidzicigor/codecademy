@@ -2,7 +2,11 @@
   <title>Learn to code | Codecademy</title>
 </head>
 <body>
-  {{> navbar}}
+  {{#if loggedIn}}
+    {{> loggedInNavbar}}
+  {{else }}
+    {{> navbar}}
+  {{/if}}
 
   {{> secondDiv}}
   {{> thirdDiv}}
