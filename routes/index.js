@@ -32,7 +32,8 @@ router.get('/login', function(req, res, next) {
 /* GET learn page. */
 router.get('/learn', function(req, res, next) {
   if (req.session.user) {
-    return res.render('learn', {loggedIn: true});
+    // Vulneralbiliy here: can search req.session.user.password for user's password. (Not hashed yet)
+    return res.render('learn', {loggedIn: true, username: req.session.user.username});
   }
 
   res.render('learn', {loggedIn: false});

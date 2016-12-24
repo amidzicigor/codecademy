@@ -5,17 +5,23 @@ $textColor: rgb(46, 66, 86)
 *
   font-family: 'Open Sans', sans-serif
 
+.userImg
+  padding: 0px
+  width: 23px
+
 body
   background-color: rgb(233, 233, 233)
 
-/* Navbar */
+.btn:focus
+  box-shadow: none
+
+// Default navbar
 .navbar
   height: 50px
   margin-bottom: 0px
   background-color: #fff
   .container-fluid
     padding: 0px
-    max-width: 960px
   .navbar-header
     max-width: 100px
     min-width: 100px
@@ -24,31 +30,84 @@ body
       position: relative
       top: -2px
   .btn-holder
-    position: relative
-    right: -5px
     text-align: right
     line-height: 48px
-    min-width: 239px
-    .navButton
-      border-radius: 0px
-      height: 38px
-      width: 100px
-      font-size: 16px
-      transition: all .15s
-    #loginBtn
-      border: 1px solid $green
-      color: $green
-      &:hover
-        border-color: $greenHover
-        color: $greenHover
-    #signupBtn
-      margin-left: 5px
-      border: 1px solid $green
-      background-color: $green
-      color: #fff
-      &:hover
-        background-color: $greenHover
-        border-color: $greenHover
+
+
+/* Logged in Navbar */
+.loggedOutNavbar
+  .navbar
+    .container-fluid
+      padding: 0px
+      max-width: 960px
+    .btn-holder
+      position: relative
+      right: -5px
+      min-width: 239px
+      .navButton
+        border-radius: 0px
+        height: 38px
+        width: 100px
+        font-size: 16px
+        transition: all .15s
+      #loginBtn
+        border: 1px solid $green
+        color: $green
+        &:hover
+          border-color: $greenHover
+          color: $greenHover
+      #signupBtn
+        margin-left: 5px
+        border: 1px solid $green
+        background-color: $green
+        color: #fff
+        &:hover
+          background-color: $greenHover
+          border-color: $greenHover
+
+.loggedInNavbar
+  .btn
+    background-color: #fff
+  #upgradeToProButton
+    border: 1px solid $green
+    color: $green
+    font-size: 16px
+    outline: none
+    height: 38px
+    &:hover
+      border-color: $greenHover
+      color: $greenHover
+  #learnButton, #catalogButton
+    padding-left: 0px
+    padding-right: 0px
+    font-size: 16px
+    outline: none
+    height: 48px
+  #learnButton
+    border-bottom: 3px solid $textColor
+    margin: 0px 16px 0px 30px
+  #catalogButton
+    margin: 0px 16px 0px 16px
+  .dropdown
+    .btn
+      outline: none
+      background-color: rgba(255, 255, 255, 0)
+  .dropdown-toggle
+    padding-left: 0px
+    padding-right: 0px
+    margin: 0px 15px 0px 16px
+
+
+
+
+
+
+
+
+
+
+
+
 
 .first-div
   background-color: rgb(233, 233, 233)
@@ -75,7 +134,7 @@ body
   max-width: 944px
   text-align: center
   margin: 0 auto
-  margin-top: 90px
+  margin-top: 75px
   h1
     color: $textColor
     font-size: 39px

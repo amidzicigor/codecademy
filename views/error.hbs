@@ -1,1 +1,16 @@
-<h1>{{ message }}</h1>
+{{> HTMLHeader}}
+  <title>404 | Page Not Found</title>
+</head>
+<body>
+  {{#if loggedIn}}
+    {{> loggedInNavbar}}
+  {{else }}
+    {{> navbar}}
+  {{/if}}
+  <div class="text-center">
+    <h1>404 Page not found.</h1>
+    <h3>Cannot find {{ path }}</h3>
+    <a href="/" class="btn btn-primary">Home</a>
+  </div>
+</body>
+{{> HTMLFooter}}
