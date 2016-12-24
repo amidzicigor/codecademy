@@ -128,6 +128,11 @@ body {
   padding-bottom: 29px; }
   .signupDiv .signup-img-div {
     padding: 60px 140px 150px 140px; }
+    .signupDiv .signup-img-div img {
+      transition: all 0.25s; }
+      .signupDiv .signup-img-div img:hover {
+        transform: translate(0px, 5px);
+        box-shadow: 0px -14px 10px -10px rgba(0, 0, 0, 0.3); }
   .signupDiv .signup-form {
     margin: 0 auto;
     max-width: 300px; }
