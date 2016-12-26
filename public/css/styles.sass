@@ -1,6 +1,7 @@
 $green: #34b3a0
 $greenHover: rgb(54, 196, 175)
 $textColor: rgb(46, 66, 86)
+$otherTextColor: rgb(62, 62, 64)
 
 *
   font-family: 'Open Sans', sans-serif
@@ -104,15 +105,29 @@ body
   padding: 20px 0px 52px 0px
 
 
-
-
-
+.learnMoreScrollButton
+  height: 56px
+  width: 100%
+  background-color: rgba(47, 86, 111, 0.9)
+  transition: all .5s
+  .content
+    color: #fff
+    padding-top: 15px
+    text-align: center
+    p
+      font-size: 16px
+    span
+      margin-top: -30px
+      transition: all .5s
+    &:hover
+      span
+        transform: translateY(5px)
 
 
 
 .second-div
   background-color: #fff
-  padding: 75px 0px 75px 0px
+  padding: 65px 0px 75px 0px
   .content
     max-width: 944px
     margin: 0 auto
@@ -122,6 +137,7 @@ body
       padding: 60px 20px 0px 20px
       h2
         font-weight: bold
+        padding-bottom: 10px
       p
         font-size: 16px
     .youtubeVideo
@@ -134,7 +150,66 @@ body
 
 .third-div
   background-color: rgb(233, 233, 233)
-  height: 1000px
+  .content
+    padding-top: 50px
+    max-width: 960px
+    margin: 0 auto
+    text-align: center
+    .title
+      padding-bottom: 55px
+      color: $textColor
+      font-size: 32px
+    .storiesRow
+      a
+        text-decoration: none
+      .story
+        color: $textColor
+        background-color: #fff
+        padding: 63px 30px 50px 30px
+        margin-bottom: 15px
+        &:hover
+          color: #fff
+          background-color: $greenHover
+        img
+          max-width: 120px
+          padding-bottom: 10px
+        .name
+          font-weight: bold
+        .location
+          font-size: 16px
+          padding-bottom: 30px
+        .pageTitle
+          font-weight: lighter
+          font-size: 26px
+    .readMore
+      padding: 25px 0px 40px 0px
+      a
+        color: $textColor
+        font-size: 17px
+        font-weight: normal
+    .hr
+      height: 1px
+      background-color: #d4d5d6
+      max-width: 960px
+      margin-bottom: 10px
+    .joinOver25Million
+      padding-bottom: 65px
+      h2
+        color: $textColor
+        font-weight: bold
+        padding-bottom: 10px
+        span
+          font-weight: normal
+          font-size: 16px
+          color: $otherTextColor
+      p
+        font-size: 16px
+        color: $otherTextColor
+
+@media only screen and (max-device-width: 576px)
+  *
+    background-color: orange
+
 
 
 .header-title
@@ -266,7 +341,7 @@ body
         font-size: 16px
         font-weight: bold
         margin-bottom: 10px
-        color: rgb(62, 62, 64)
+        color: $otherTextColor
       .socialIcons
         a
           color: rgb(147, 149, 152)
@@ -283,7 +358,7 @@ body
 .legal
   background-color: #d4d5d6
   border-top: 1px solid #fff
-  height: 58px
+  min-height: 58px
   .content
     max-width: 935px
     margin: 0 auto
@@ -294,11 +369,11 @@ body
         font-size: 17
         color: rgb(32, 64, 86)
   .copyright
-    color: rgb(62, 62, 64)
+    color: $otherTextColor
     font-weight: bold
     font-size: 14px
   .languageDropup
-    color: rgb(62, 62, 64)
+    color: $otherTextColor
     button
       padding: 0px 5px 0px 5px
       background-color: #d4d5d6
