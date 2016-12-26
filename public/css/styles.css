@@ -13,6 +13,7 @@ body {
 
 .navbar {
   height: 50px;
+  border-radius: 0px;
   margin-bottom: 0px;
   background-color: #fff; }
   .navbar .container-fluid {
@@ -93,7 +94,20 @@ body {
 
 .second-div {
   background-color: #fff;
-  height: 500px; }
+  padding: 75px 0px 75px 0px; }
+  .second-div .content {
+    max-width: 944px;
+    margin: 0 auto; }
+    .second-div .content .leftText {
+      text-align: right;
+      color: #2e4256;
+      padding: 60px 20px 0px 20px; }
+      .second-div .content .leftText h2 {
+        font-weight: bold; }
+      .second-div .content .leftText p {
+        font-size: 16px; }
+    .second-div .content .youtubeVideo {
+      padding-left: 20px; }
 
 .third-div {
   background-color: #e9e9e9;
@@ -103,7 +117,7 @@ body {
   max-width: 944px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 75px; }
+  margin-top: 90px; }
   .header-title h1 {
     color: #2e4256;
     font-size: 39px; }

@@ -16,6 +16,91 @@
   <title>Learn to code | Codecademy</title>
 </head>
 <body>
+<!-- Navbar -->
+<div class="loggedOutNavbar">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header col-sm-6 col-xs-6">
+        <a class="navbar-brand" href="/">
+          <img class="logoImg" src="img/codecademyLogo.svg" alt="">
+        </a>
+      </div>
+      <div class="btn-holder pull-right col-sm-6 col-xs-6">
+        <a id="loginBtn" class="btn navButton" href="/login">Log in</a>
+        <a id="signupBtn" class="btn navButton" href="/signup">Sign up</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="first-div container-fluid">
+
+  <!-- Attention getter -->
+  <div class="header-title">
+    <h1>Learn to code interactively, for free.</h1>
+  </div>
+
+  <!-- Padding -->
+  <div class="divide-padding"></div>
+
+  <!-- Signup section -->
+  <div class="signupDiv container-fluid">
+    <div class="row">
+      <!-- Left image -->
+      <div class="signup-img-div col-lg-7 col-md-7 col-sm-7 col-xs-12">
+        <a href="https://github.com/igoramidzic/codecademy" target="_blank">
+          <img class="signup-img img-responsive" src="img/mac.png" alt="">
+        </a>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+        <!-- Right form -->
+        <div class="signupDiv">
+          <div class="signup-form">
+            <form class="form-signin" data-toggle="validator" action="/signup" method="post">
+              <h2 class="form-signin-heading">SIGN UP AND START CODING IN SECONDS</h2>
+              <div class="btn-group-vertical">
+                <input class="btn form-control" id="inputEmail" type="email" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
+                <input class="btn form-control" type="text" name="username" placeholder="Username" required>
+                <input class="btn form-control" type="password" name="password" placeholder="Password" required>
+              </div>
+              <!-- Signup button -->
+              <button class="signup-btn btn btn-block" type="submit">SIGN UP</button>
+              <!-- Login with Google/Facebook buttons -->
+              <div class="social-btn">
+                <button class="btn" type="submit"><span class="g-icon"><i class="fa fa-google"></i></span> Google</button>
+                <button class="btn pull-right" type="submit"><span class="fb-icon"><i class="fa fa-facebook-official"></i></span> Facebook</button>
+              </div>
+              <!-- Terms of service disclaimer -->
+              <p class="ToS">By signing up, you agree to our <a href="#">Terms of service</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Second section -->
+<div class="second-div hidden-xs">
+  <div class="content container-fluid">
+    <div class="row">
+      <div class="leftText col-lg-4 col-md-4 col-sm-4">
+        <h2>How can coding help you?</h2>
+        <p>Hear how Tommy went from knowing nothing about code to building one of Time's '50 Best Websites' after learning with Codecademy.</p>
+      </div>
+      <div class="youtubeVideo col-lg-8 col-md-8 col-sm-8">
+        <iframe width="590" height="330" src="https://www.youtube.com/embed/fjQ7XaMNQNc" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Third section -->
+<div class="third-div container-fluid">
+
+</div>
+
+<!-- Footer section (courses) -->
 <div class="footer container-fluid">
   <div class="content row">
     <!-- logo and social sites -->
@@ -105,7 +190,7 @@
   </div>
 </div>
 
-
+<!-- Footer section (legal info) -->
 <div class="legal container-fluid">
   <div class="content">
     <div class="row">
