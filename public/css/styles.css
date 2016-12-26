@@ -95,6 +95,7 @@ body {
 .learnMoreScrollButton {
   height: 56px;
   width: 100%;
+  opacity: 0;
   background-color: rgba(47, 86, 111, 0.9);
   transition: all 0.5s; }
   .learnMoreScrollButton .content {
