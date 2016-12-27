@@ -1,7 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var csrf = require('csurf');
+var passport = require('passport');
+
 var {mongoose} = require('../server/db/mongoose');
 var {User} = require('../server/models/user');
+
+// var csrfProtection = csrf();
+// router.use(csrfProtection);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

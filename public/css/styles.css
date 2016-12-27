@@ -95,6 +95,7 @@ body {
 .learnMoreScrollButton {
   height: 56px;
   width: 100%;
+  opacity: 0;
   background-color: rgba(47, 86, 111, 0.9);
   transition: all 0.5s; }
   .learnMoreScrollButton .content {
@@ -143,6 +144,7 @@ body {
     .third-div .content .storiesRow .story {
       color: #2e4256;
       background-color: #fff;
+      height: 455px;
       padding: 63px 30px 50px 30px;
       margin-bottom: 15px; }
       .third-div .content .storiesRow .story:hover {

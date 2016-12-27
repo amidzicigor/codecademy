@@ -7,10 +7,14 @@ var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 var expressValidator = require('express-validator');
 var session = require('express-session');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var index = require('./routes/index');
 
 var app = express();
+
+require('./config/passport');
 
 // view engine setup
 app.engine('hbs', hbs({
@@ -25,9 +29,7 @@ app.set('view engine', 'hbs');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -36,6 +38,9 @@ app.use(session({
     saveUninitialized: false,
     resave: false
 }))
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 
