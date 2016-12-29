@@ -1,4 +1,4 @@
-{{> HTMLHeader}}
+<!-- {{> HTMLHeader}}
   <title>404 | Page Not Found</title>
 </head>
 <body>
@@ -13,4 +13,8 @@
     <a href="/" class="btn btn-primary">Home</a>
   </div>
 </body>
-{{> HTMLFooter}}
+{{> HTMLFooter}} -->
+
+<h1>{{message}}</h1>
+<h2>{{error.status}}</h2>
+<pre>{{error.stack}}</pre>

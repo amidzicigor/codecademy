@@ -1,13 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var csrf = require('csurf');
-var passport = require('passport');
+var express         = require('express');
+var router          = express.Router();
+var csrf            = require('csurf');
+var passport        = require('passport');
 
-var {mongoose} = require('../server/db/mongoose');
-var {User} = require('../server/models/user');
-
-// var csrfProtection = csrf();
-// router.use(csrfProtection);
+var {mongoose}      = require('../server/db/mongoose');
+var {User}          = require('../server/models/user');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -22,8 +19,8 @@ router.get('/signup', function(req, res, next) {
   if (req.session.user) {
     return res.redirect('/learn');
   }
-
-  res.render('signup');
+  var messages = req.flash('error');
+  res.render('signup', {messages: messages, hasErrors: messages.length > 0});
 });
 
 /* GET login page. */
@@ -32,79 +29,58 @@ router.get('/login', function(req, res, next) {
     return res.redirect('/learn');
   }
 
-  res.render('login');
+  var messages = req.flash('error');
+  res.render('login', {messages: messages, hasErrors: messages.length > 0});
 });
 
 /* GET learn page. */
 router.get('/learn', function(req, res, next) {
   if (req.session.user) {
-    // Vulneralbiliy here: can search req.session.user.password for user's password. (Not hashed yet)
-    return res.render('learn', {loggedIn: true, username: req.session.user.username});
+    console.log(req.session.user);
+    return res.render('learn', {username: req.session.user.username, loggedIn: true})
   }
 
-  res.render('learn', {loggedIn: false});
+  res.render('learn');
 });
+
+// --------------------------------- POST ----------------------------------- //
 
 /* POST signup page. */
-router.post('/signup', function(req, res, next) {
-  var item = {
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password
-  }
+router.post('/signup', passport.authenticate('local.signup', {
+  successRedirect: '/learn',
+  failureRedirect: '/signup',
+  failureFlash: true
+}));
 
-  var user = new User(item);
-  user.save().then(() => {
-    req.session.user = user;
-    res.redirect('/learn');
-  }).catch((e) => {
-    console.log(e);
-    res.redirect('/signup');
-  })
-});
+router.post('/login', passport.authenticate('local.login', {
+  successRedirect: '/learn',
+  failureRedirect: '/login',
+  failureFlash: true
+}));
+
+/* Signup with facebook */
+// router.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email']}));
+//
+// router.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', { successRedirect: '/learn',
+//                                       failureRedirect: '/login' }));
 
 /* POST login page. */
 router.post('/login', function(req, res, next) {
-  var emailOrUser = req.body.emailOrUser;
-  var password = req.body.password;
 
-  User.findOne({email: emailOrUser}).then(function (user) {
-    if (user.password === password) {
-      req.session.user = user;
-      res.redirect('/learn');
-    }
-    res.redirect('/login');
-  }).catch((e) => {
-    console.log(e);
-    res.redirect('/login');
-  })
 })
 
 /* POST logout page. */
-router.post('/logout', (req, res) => {
+router.post('/logout', function(req, res, next) {
   req.session.destroy();
   res.redirect('/');
 })
 
-// router.post('/update', function(req, res, next) {
-//   var id = req.body.id;
-//
-//   User.findById(id, function (err, doc) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     doc.title = req.body.title;
-//     doc.content = req.body.content;
-//     doc.author = req.body.author;
-//     doc.save();
-//   });
-//   res.redirect('/');
-// });
-//
-// router.post('/delete', function(req, res, next) {
-//   var id = req.body.id;
-//   User.findByIdAndRemove(id).exec();
-//   res.redirect('/');
-// });
+function isLoggedIn (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
 module.exports = router;

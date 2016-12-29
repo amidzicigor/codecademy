@@ -9,15 +9,22 @@
         <input class="btn form-control" type="password" name="password" placeholder="Password" required>
         <!-- <input type="hidden" name="_csrf" value="{{ csrfToken }}"> -->
       </div>
+      {{# if hasErrors}}
+        <div class="alert alert-danger">
+          {{# each messages}}
+            <p>{{ this }}</p>
+          {{/each}}
+        </div>
+      {{/if}}
       <!-- Signup button -->
       <button class="signup-btn btn btn-block" type="submit">SIGN UP</button>
-      <!-- Login with Google/Facebook buttons -->
-      <div class="social-btn">
-        <button class="btn" type="submit"><span class="g-icon"><i class="fa fa-google"></i></span> Google</button>
-        <button class="btn pull-right" type="submit"><span class="fb-icon"><i class="fa fa-facebook-official"></i></span> Facebook</button>
-      </div>
-      <!-- Terms of service disclaimer -->
-      <p class="ToS">By signing up, you agree to our <a href="#">Terms of service</a></p>
     </form>
+    <!-- Login with Google/Facebook buttons -->
+    <div class="social-btn">
+      <a href="#"><button class="btn"><span class="g-icon"><i class="fa fa-google"></i></span> Google</button></a>
+      <a href="/auth/facebook"><button class="btn pull-right"><span class="fb-icon"><i class="fa fa-facebook-official"></i></span> Facebook</button></a>
+    </div>
+    <!-- Terms of service disclaimer -->
+    <p class="ToS">By signing up, you agree to our <a href="#">Terms of service</a></p>
   </div>
 </div>
