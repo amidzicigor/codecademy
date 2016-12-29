@@ -357,4 +357,11 @@ body {
       .legal .languageDropup button:active {
         outline: none; }
 
+.validationErrors {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #ff0000; }
+
 /*# sourceMappingURL=styles.css.map */

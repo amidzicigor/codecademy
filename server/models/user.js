@@ -6,6 +6,7 @@ var userSchema = new Schema({
     email: {
       type: String,
       trim: true,
+      lowercase: true,
       minLength: 1,
       unique: true,
       required: true

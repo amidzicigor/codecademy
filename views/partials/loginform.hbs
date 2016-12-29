@@ -7,13 +7,7 @@
         <input class="btn" type="password" name="password" placeholder="Password">
         <!-- <input type="hidden" name="_csrf" value="{{ csrfToken }}"> -->
       </div>
-      {{# if hasErrors}}
-        <div class="alert alert-danger">
-          {{# each messages}}
-            <p>{{ this }}</p>
-          {{/each}}
-        </div>
-      {{/if}}
+      {{> validationErrors}}
       <!-- Signup button -->
       <button class="signup-btn btn btn-block" type="submit">LOG IN</button>
       <!-- Socal site log in -->
