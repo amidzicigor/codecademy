@@ -60,21 +60,21 @@ passport.use('local.signup', new LocalStrategy({
 
 // Local login strategy
 passport.use('local.login', new LocalStrategy({
-  usernameField: 'email',
+  usernameField: 'emailOrUsername',
   passwordField: 'password',
   passReqToCallback: true
-}, function (req, email, password, done) {
-    User.findOne({'username': email}, function (err, user) {
+}, function (req, emailOrUsername, password, done) {
+    User.findOne({$or:[{'username': emailOrUsername}, {'email': emailOrUsername}]}, function (err, user) {
       if (err) {
         return done(err);
       }
       if (!user) {
         console.log('No user found');
-        return done(null, false, {message: 'Email does not exist'})
+        return done(null, false, {message: 'Invalid login or password.'})
       }
       if (!user.validPassword(password)) {
         console.log('Incorrect password');
-        return done(null, false, {message: 'Incorrect password'})
+        return done(null, false, {message: 'Invalid login or password.'})
       }
       req.session.user = user;
       return done(null, user);
