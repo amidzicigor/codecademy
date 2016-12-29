@@ -186,9 +186,6 @@ body {
         font-size: 16px;
         color: #3e3e40; }
 
-@media only screen and (max-device-width: 576px) {
-  * {
-    background-color: orange; } }
 .header-title {
   max-width: 944px;
   text-align: center;
@@ -356,6 +353,57 @@ body {
         color: #fff; }
       .legal .languageDropup button:active {
         outline: none; }
+
+.accountPage {
+  padding-top: 50px; }
+  .accountPage .loggedInNavbar .content {
+    max-width: 960px; }
+  .accountPage .mainContent {
+    max-width: 960px;
+    padding-bottom: 80px; }
+    .accountPage .mainContent .pageTitle {
+      padding-bottom: 60px; }
+      .accountPage .mainContent .pageTitle h1 {
+        font-size: 41px;
+        color: #2e4256; }
+    .accountPage .mainContent .userInfo h3 {
+      font-size: 28px; }
+    .accountPage .mainContent .userInfo ul {
+      padding-left: 0px;
+      padding-bottom: 50px; }
+      .accountPage .mainContent .userInfo ul #li1 {
+        background-color: #fff; }
+      .accountPage .mainContent .userInfo ul li {
+        list-style-type: none;
+        padding-left: 10px; }
+        .accountPage .mainContent .userInfo ul li h5 {
+          padding: 9px 0px 9px 0px; }
+        .accountPage .mainContent .userInfo ul li a {
+          color: #2e4256;
+          text-decoration: none;
+          font-size: 20px; }
+    .accountPage .mainContent .userInfo .forms {
+      background-color: #fff;
+      padding-bottom: 20px; }
+      .accountPage .mainContent .userInfo .forms label {
+        font-weight: normal;
+        font-size: 17px; }
+      .accountPage .mainContent .userInfo .forms input[type=text], .accountPage .mainContent .userInfo .forms select {
+        box-shadow: 0px 0px;
+        border-radius: 0px;
+        color: #2e4256;
+        height: 50px;
+        border: 1px solid #9f9fa0;
+        font-size: 18px; }
+      .accountPage .mainContent .userInfo .forms textarea {
+        border-radius: 0px;
+        color: #2e4256;
+        border: 1px solid #9f9fa0;
+        font-size: 16px;
+        box-shadow: 0px 0px; }
+      .accountPage .mainContent .userInfo .forms img {
+        max-width: 120px;
+        margin-bottom: 5px; }
 
 #exactCopy {
   font-size: 19px;

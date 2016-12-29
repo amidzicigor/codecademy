@@ -15,147 +15,161 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <title>Learn to code | Codecademy</title>
 </head>
-<body>
-<!-- Navbar -->
-<div class="loggedOutNavbar">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header col-sm-6 col-xs-6">
-        <a class="navbar-brand" href="/">
+<body class="accountPage">
+
+
+<div class="loggedInNavbar">
+  <nav class="navbar navbar-fixed-top navbar-default container-fluid">
+    <div class="content container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/learn">
           <img class="logoImg" src="img/codecademyLogo.svg" alt="">
         </a>
       </div>
-      <div class="btn-holder pull-right col-sm-6 col-xs-6">
-        <a id="loginBtn" class="btn navButton" href="/login">Log in</a>
-        <a id="signupBtn" class="btn navButton" href="/signup">Sign up</a>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="btn-holder">
+        <ul class="nav navbar-nav navbar-right">
+          <li><input id="upgradeToProButton" class="btn hidden-xs" onClick="location='#'" type="button" value="Upgrade to Pro"></li>
+          <li><input id="learnButton" class="btn hidden-xs" onClick="location='#'" type="button" value="Learn"></li>
+          <li><input id="catalogButton" class="btn hidden-xs" onClick="location='#'" type="button" value="Catalog"></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" href="">
+              <i class="fa fa-bell"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">Notifications</li>
+
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" href="">
+              <img class="img-circle userImg" src="img/userImg.jpg">
+            </a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">{{ user.username }}</li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="/account">
+                    <input class="btn" type="submit" value="My account">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                    <input class="btn" type="submit" value="Help">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <form action="/logout" method="post">
+                    <input class="btn" type="submit" value="Log out">
+                  </form>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
 </div>
 
-<!-- First section (signup form) -->
-<div class="first-div container-fluid">
 
-  <!-- Attention getter -->
-  <div class="header-title">
-    <h1>Learn to code interactively, for free.</h1>
+<div class="mainContent container-fluid">
+  <!-- Page Header -->
+  <div class="pageTitle row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 float-right">
+      <h1>My Account</h1>
+    </div>
   </div>
 
-  <!-- Padding -->
-  <div class="divide-padding"></div>
-
-  <!-- Signup section -->
-  <div class="signupDiv container-fluid">
-    <div class="row">
-      <!-- Left image -->
-      <div class="signup-img-div col-lg-7 col-md-7 col-sm-7 col-xs-12">
-        <a href="https://github.com/igoramidzic/codecademy" target="_blank">
-          <img class="signup-img img-responsive" src="img/mac.png" alt="">
-        </a>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-        <!-- Right form -->
-        <div class="signupDiv">
-          <div class="signup-form">
-            <form class="form-signin" data-toggle="validator" action="/signup" method="post">
-              <h2 class="form-signin-heading">SIGN UP AND START CODING IN SECONDS</h2>
-              <div class="btn-group-vertical">
-                <input class="btn form-control" id="inputEmail" type="email" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
-                <input class="btn form-control" type="text" name="username" placeholder="Username" required>
-                <input class="btn form-control" type="password" name="password" placeholder="Password" required>
-              </div>
-              <!-- Signup button -->
-              <button class="signup-btn btn btn-block" type="submit">SIGN UP</button>
-              <!-- Login with Google/Facebook buttons -->
-              <div class="social-btn">
-                <button class="btn" type="submit"><span class="g-icon"><i class="fa fa-google"></i></span> Google</button>
-                <button class="btn pull-right" type="submit"><span class="fb-icon"><i class="fa fa-facebook-official"></i></span> Facebook</button>
-              </div>
-              <!-- Terms of service disclaimer -->
-              <p class="ToS">By signing up, you agree to our <a href="#">Terms of service</a></p>
-            </form>
+  <!-- User information -->
+  <!-- User information -->
+  <div class="userInfo row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <ul>
+        <li id="li1"><h5><a href="/account">Basic Information</a></h5></li>
+        <li><h5><a href="#">Change Password</a></h5></li>
+        <li><h5><a href="#">Mail Settings</a></h5></li>
+        <li><h5><a href="#">Linked Accounts</a></h5></li>
+        <li><h5><a href="#">Delete Account</a></h5></li>
+      </ul>
+    </div>
+    <div class="forms col-lg-8 col-md-8 col-sm-8 col-xs-12 float-right">
+      <h3>Basic Information</h3>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" class="form-control" type="text" value="" placeholder="Name">
           </div>
+          <div class="form-group">
+            <label for="email">Email (required)</label>
+            <input id="email" class="form-control" type="text" value="{{ user.email }}" placeholder="Email (required)">
+          </div>
+          <div class="form-group">
+            <label for="username">Username (required)</label>
+            <input id="username" class="form-control" type="text" value="{{ user.username }}" placeholder="Username (required)">
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" class="form-control" type="text" value="" placeholder="Location">
+          </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <select class="form-control" id="location">
+              <option>English</option>
+              <option>Español</option>
+              <option>Français</option>
+              <option>Português</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="aboutMe">About Me</label>
+            <textarea class="form-control" id="aboutMe" rows="4" placeholder="About Me"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="website">Website</label>
+            <input id="website" class="form-control" type="text" placeholder="Website">
+          </div>
+          <div class="form-group">
+            <label for="gitHub">GitHub</label>
+            <input id="gitHub" class="form-control" type="text" placeholder="GitHub">
+          </div>
+          <div class="form-group">
+            <label for="twitter">Twitter</label>
+            <input id="twitter" class="form-control" type="text" placeholder="Twitter">
+          </div>
+          <div class="form-group">
+            <label for="linkedInUrl">LinkedIn Url</label>
+            <input id="linkedInUrl" class="form-control" type="text" placeholder="LinkedIn Url">
+          </div>
+          <div class="form-group">
+            <label for="linkedInUrl">Profile Picture</label><br>
+            <img src="img/userImg.jpg">
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+          </div>
+          <div class="form-check">
+            <label>Who can view my profile</label>
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Codecademy Users
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+              Everyone
+            </label>
+          </div>
+          <button type="submit" class="btn btn-danger">UPDATE PROFILE</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- learnMore scroll-link -->
-<div class="container-fluid hidden-xs">
-  <a href="#learnMore">
-    <nav class="learnMoreScrollButton navbar navbar-default navbar-fixed-bottom">
-      <div class="content container-fluid">
-        <p>Learn more</p>
-        <span class="caret"></span>
-      </div>
-    </nav>
-  </a>
-</div>
-
-<!-- Second section -->
-<div id="learnMore" class="second-div hidden-xs">
-  <div class="content container-fluid">
-    <div class="row">
-      <div class="leftText col-lg-4 col-md-4 col-sm-4">
-        <h2>How can coding help you?</h2>
-        <p>Hear how Tommy went from knowing nothing about code to building one of Time's '50 Best Websites' after learning with Codecademy.</p>
-      </div>
-      <div class="youtubeVideo col-lg-8 col-md-8 col-sm-8">
-        <iframe width="590" height="330" src="https://www.youtube.com/embed/fjQ7XaMNQNc" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Third section -->
-<div class="third-div">
-  <div class="content container-fluid">
-    <h2 class="title">Codecademy Stories</h2>
-    <div class="storiesRow row">
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <a href="#">
-          <div class="story">
-            <img class="img-circle" src="img/sam-fellig.jpg" alt="">
-            <h4 class="name">Sam Fellig</h4>
-            <h4 class="location"><i class="fa fa-map-marker"></i> New York, US</h4>
-            <h2 class="pageTitle">How to Outgrow the Fear of Starting</h2>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <a href="#">
-          <div class="story">
-            <img class="img-circle" src="img/liz.jpg" alt="">
-            <h4 class="name">Liz Beigle-Bryant</h4>
-            <h4 class="location"><i class="fa fa-map-marker"></i> Seattle</h4>
-            <h2 class="pageTitle">A new career at 55</h2>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <a href="#">
-          <div class="story">
-            <img class="img-circle" src="img/joah-haley.jpg" alt="">
-            <h4 class="name">Joah Gerstenberg and Haley Higgins</h4>
-            <h4 class="location"><i class="fa fa-map-marker"></i> Texas</h4>
-            <h2 class="pageTitle">Teen duo from Texas codes a calculator</h2>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="readMore container-fluid">
-      <a href="#">Read more stories</a>
-    </div>
-    <div class="hr"></div>
-    <div class="joinOver25Million container-fluid">
-      <h2><span>Join over</span><br>25 million</h2>
-      <p>learning from around the globe</p>
-    </div>
-  </div>
-</div>
-
-<!-- Footer section (courses) -->
 <div class="footer container-fluid">
   <div class="content row">
     <!-- logo and social sites -->
@@ -245,7 +259,6 @@
   </div>
 </div>
 
-<!-- Footer section (legal info) -->
 <div class="legal container-fluid">
   <div class="content">
     <div class="row">
@@ -280,7 +293,6 @@
     </div>
   </div>
 </div>
-
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

@@ -1,49 +1,6 @@
-<!-- Navbar -->
-{{!-- <div class="loggedInNavbar">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header col-sm-6 col-xs-6">
-        <a class="navbar-brand" href="/learn">
-          <img class="logoImg" src="img/codecademyLogo.png" alt="">
-        </a>
-      </div>
-      <div class="btn-holder pull-right col-sm-6 col-xs-6 dropdown">
-        <a id="upgradeToPro" class="btn navButton" href="/learn">Upgrade to Pro</a>
-        <a id="learnButton" class="btn navButton learnAndCatalog" href="/learn">Learn</a>
-        <a id="catalogButton" class="btn navButton learnAndCatalog" href="/learn">Catalog</a>
-
-
-        <!-- user notifications and dropdown menu -->
-        <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="/learn">
-          <i class="fa fa-bell"></i>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-
-        <!-- userImg and dropdown menu -->
-        <a class="imgLink btn navButton dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" href="/learn">
-          <img id='userImg' class="img-circle img-responsive" src="img/userImg.jpg">
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div> --}}
-
 <div class="loggedInNavbar">
   <nav class="navbar navbar-fixed-top navbar-default container-fluid">
-    <div class="container-fluid">
+    <div class="content container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <a class="navbar-brand" href="/learn">
@@ -70,10 +27,10 @@
               <img class="img-circle userImg" src="img/userImg.jpg">
             </a>
             <ul class="dropdown-menu">
-              <li class="dropdown-header">{{ username }}</li>
+              <li class="dropdown-header">{{ user.username }}</li>
               <li role="separator" class="divider"></li>
               <li>
-                <a href="#">
+                <a href="/account">
                     <input class="btn" type="submit" value="My account">
                 </a>
               </li>

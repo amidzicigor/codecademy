@@ -37,10 +37,15 @@ router.get('/login', function(req, res, next) {
 router.get('/learn', function(req, res, next) {
   if (req.session.user) {
     console.log(req.session.user);
-    return res.render('learn', {username: req.session.user.username, loggedIn: true})
+    return res.render('learn', {user: req.session.user, loggedIn: true})
   }
 
   res.render('learn');
+});
+
+/* GET account page. */
+router.get('/account', isLoggedIn, function(req, res, next) {
+  res.render('account', {user: req.session.user});
 });
 
 // --------------------------------- POST ----------------------------------- //

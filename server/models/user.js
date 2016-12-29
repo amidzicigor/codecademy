@@ -3,6 +3,11 @@ var Schema          = mongoose.Schema;
 var bcrypt          = require('bcrypt-nodejs');
 
 var userSchema = new Schema({
+    name: {
+      type: String,
+      trim: true,
+      default: ''
+    },
     email: {
       type: String,
       trim: true,
@@ -19,7 +24,46 @@ var userSchema = new Schema({
       type: String,
       minLength: 6,
       required: true
-    }
+    },
+    location: {
+      type: String,
+      default: ''
+    },
+    language: {
+      type: String,
+      default: 'English'
+    },
+    aboutMe: {
+      type: String,
+      time: true,
+      default: ''
+    },
+    website: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    gitHub: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    twitter: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    linkedinURL: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    profilePicture: {
+      type: String,
+      default: 'img/userImg.jpg'
+    },
+
+
   // },
   // facebook: {
   //   id: String,
