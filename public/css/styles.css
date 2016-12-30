@@ -271,7 +271,7 @@ body {
           color: #43548d; }
     .signupDiv .signup-form .ToS {
       color: #2e4256;
-      font-size: 16px;
+      font-size: 13.5px;
       text-align: center; }
     .signupDiv .signup-form .socialLogin {
       text-align: center;
@@ -370,6 +370,7 @@ body {
       font-size: 28px; }
     .accountPage .mainContent .userInfo ul {
       padding-left: 0px;
+      padding-right: 30px;
       padding-bottom: 50px; }
       .accountPage .mainContent .userInfo ul #li1 {
         background-color: #fff; }
@@ -384,6 +385,7 @@ body {
           font-size: 20px; }
     .accountPage .mainContent .userInfo .forms {
       background-color: #fff;
+      margin-top: 10px;
       padding-bottom: 20px; }
       .accountPage .mainContent .userInfo .forms label {
         font-weight: normal;

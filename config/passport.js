@@ -1,8 +1,8 @@
 var passport              = require('passport');
 var {User}                = require('../server/models/user');
 var LocalStrategy         = require('passport-local').Strategy;
-var FacebookStrategy      = require('passport-facebook').Strategy;
-var configFacebookAuth    = require('./facebookAuth');
+// var FacebookStrategy      = require('passport-facebook').Strategy;
+// var configFacebookAuth    = require('./facebookAuth');
 
 passport.serializeUser(function (user, done) {
   done(null, user.id);
@@ -81,6 +81,45 @@ passport.use('local.login', new LocalStrategy({
     });
   }
 ));
+
+passport.use('local.update', new LocalStrategy({
+  usernameField: 'emailOrUsername',
+  passwordField: 'password',
+  passReqToCallback: true
+}, function (req, emailOrUsername, password, done) {
+    User.findOne({'username': 'amidzicigor'}, function (err, user) {
+      if (err) {
+        return done(err);
+        console.log('Hello!!!@@@@@@@@@!!!!!!!!!!@@@@@@@@@@@!')
+      }
+      if (!user) {
+        console.log('No user found');
+        console.log('Hello!!!@@@@@@@@@!!!!!!!!!!@@@@@@@@@@@!')
+        return done(null, false, {message: 'Invalid login or password.'})
+      }
+      if (!user.validPassword(password)) {
+        console.log('Incorrect password');
+        console.log('Hello!!!@@@@@@@@@!!!!!!!!!!@@@@@@@@@@@!')
+        return done(null, false, {message: 'Invalid login or password.'})
+      }
+      console.log('Hello!!!@@@@@@@@@!!!!!!!!!!@@@@@@@@@@@!')
+      return done(null, user);
+    });
+  }
+));
+
+// var updateData = {
+//   name: req.name,
+//   email: req.email,
+//   username: req.username,
+//   location: req.location,
+//   language: req.language,
+//   aboutMe: req.aboutMe,
+//   website: req.website,
+//   gitHub: req.gitHub,
+//   twitter: req.twitter,
+//   linkedinURL: req.linkedinURL
+// }
 
 // Facebook signup strategy
 // passport.use(new FacebookStrategy({

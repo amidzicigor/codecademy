@@ -15,37 +15,24 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET signup page. */
-router.get('/signup', function(req, res, next) {
-  if (req.session.user) {
-    return res.redirect('/learn');
-  }
+router.get('/signup', notLoggedIn, function(req, res, next) {
   var messages = req.flash('error');
   res.render('signup', {messages: messages, hasErrors: messages.length > 0});
 });
 
 /* GET login page. */
-router.get('/login', function(req, res, next) {
-  if (req.session.user) {
-    return res.redirect('/learn');
-  }
-
+router.get('/login', notLoggedIn, function(req, res, next) {
   var messages = req.flash('error');
   res.render('login', {messages: messages, hasErrors: messages.length > 0});
 });
 
 /* GET learn page. */
 router.get('/learn', function(req, res, next) {
-  if (req.session.user) {
-    console.log(req.session.user);
+  if (req.isAuthenticated()) {
     return res.render('learn', {user: req.session.user, loggedIn: true})
   }
 
   res.render('learn');
-});
-
-/* GET account page. */
-router.get('/account', isLoggedIn, function(req, res, next) {
-  res.render('account', {user: req.session.user});
 });
 
 // --------------------------------- POST ----------------------------------- //
@@ -81,11 +68,11 @@ router.post('/logout', function(req, res, next) {
   res.redirect('/');
 })
 
-function isLoggedIn (req, res, next) {
-  if (req.isAuthenticated()) {
+function notLoggedIn (req, res, next) {
+  if (!req.isAuthenticated()){
     return next();
   }
-  res.redirect('/login');
+  res.redirect('/');
 }
 
 module.exports = router;
