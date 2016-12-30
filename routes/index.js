@@ -62,7 +62,7 @@ router.post('/login', function(req, res, next) {
   var emailOrUser = req.body.emailOrUser;
   var password = req.body.password;
 
-  User.findOne({email: emailOrUser}).then(function (user) {
+  User.findOne({email: emailOrUser).then(function (user) {
     if (user.password === password) {
       req.session.user = user;
       res.redirect('/learn');
@@ -74,7 +74,7 @@ router.post('/login', function(req, res, next) {
   })
 })
 
-/* POST logout page. */
+/* POST logout session. */
 router.post('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/');
