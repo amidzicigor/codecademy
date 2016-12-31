@@ -3,20 +3,24 @@
   <div class="signup-form">
     <form class="form-signin" data-toggle="validator" action="/signup" method="post">
       <h2 class="form-signin-heading">SIGN UP AND START CODING IN SECONDS</h2>
+      <h5>This is not codecademy.</h5>
       <div class="btn-group-vertical">
         <input class="btn form-control" id="inputEmail" type="email" name="email" placeholder="Email" data-error="Bruh, that email address is invalid" required>
-        <input class="btn form-control" type="text" name="username" placeholder="Username" required>
         <input class="btn form-control" type="password" name="password" placeholder="Password" required>
+        <input class="btn form-control" type="text" name="username" placeholder="Username" required>
+        <!-- <input type="hidden" name="_csrf" value="{{ csrfToken }}"> -->
       </div>
+      {{> validationErrors}}
       <!-- Signup button -->
       <button class="signup-btn btn btn-block" type="submit">SIGN UP</button>
-      <!-- Login with Google/Facebook buttons -->
-      <div class="social-btn">
-        <button class="btn" type="submit"><span class="g-icon"><i class="fa fa-google"></i></span> Google</button>
-        <button class="btn pull-right" type="submit"><span class="fb-icon"><i class="fa fa-facebook-official"></i></span> Facebook</button>
-      </div>
-      <!-- Terms of service disclaimer -->
-      <p class="ToS">By signing up, you agree to our <a href="#">Terms of service</a></p>
     </form>
+    <!-- Login with Google/Facebook buttons -->
+    <div class="social-btn">
+      <a href="#"><button class="btn"><span class="g-icon"><i class="fa fa-google"></i></span> Google</button></a>
+      <a href="/auth/facebook"><button class="btn pull-right"><span class="fb-icon"><i class="fa fa-facebook-official"></i></span> Facebook</button></a>
+    </div>
+    <!-- Terms of service disclaimer -->
+    <p class="ToS">This is not codecademy. Do not enter sensitive data.</p>
+    <!-- <p class="ToS">By signing up, you agree to our <a href="#">Terms of service</a></p> -->
   </div>
 </div>

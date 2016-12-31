@@ -2,10 +2,13 @@
   <div class="signup-form">
     <form class="form-signin" action="/login" method="post">
       <h2 class="form-signin-heading">LOG IN AND CONTINUE CODING</h2>
+      <h5 class="form-signin-heading">This is not codecademy.com</h5>
       <div class="btn-group-vertical">
-        <input class="btn" type="text" name="emailOrUser" placeholder="Email or username">
+        <input class="btn" type="text" name="emailOrUsername" placeholder="Email or username">
         <input class="btn" type="password" name="password" placeholder="Password">
+        <!-- <input type="hidden" name="_csrf" value="{{ csrfToken }}"> -->
       </div>
+      {{> validationErrors}}
       <!-- Signup button -->
       <button class="signup-btn btn btn-block" type="submit">LOG IN</button>
       <!-- Socal site log in -->

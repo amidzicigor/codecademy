@@ -1,0 +1,35 @@
+<title>My Account | Codecademy</title>
+</head>
+<body  class="accountPage">
+  {{> loggedInNavbar}}
+
+  <div class="mainContent container-fluid">
+    <!-- Page Header -->
+    <div class="pageTitle row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-right">
+        <h1>My Account</h1>
+      </div>
+    </div>
+
+    <!-- User information -->
+    <!-- User information -->
+    <div class="userInfo row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <ul>
+          <li id="li1"><h5><a href="/account">Basic Information</a></h5></li>
+          <li><h5><a href="/account/password">Change Password</a></h5></li>
+          <li><h5><a href="/account/mail_settings">Mail Settings</a></h5></li>
+          <li><h5><a href="/account/linked_accts">Linked Accounts</a></h5></li>
+          <li><h5><a href="/account/delete_acct">Delete Account</a></h5></li>
+        </ul>
+      </div>
+      <div class="forms col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        {{> basicInformation}}
+      </div>
+    </div>
+  </div>
+
+{{> footer}}
+{{> legal}}
+</body>

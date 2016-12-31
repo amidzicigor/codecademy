@@ -1,0 +1,76 @@
+<h3>Basic Information</h3>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <form class="" action="/account/user-update" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" class="form-control" type="text" name="name" value="{{ session.passport.user.name }}" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email (required)</label>
+        <input id="email" class="form-control" type="text" name="email" value="{{ session.passport.user.email }}" placeholder="Email (required)">
+      </div>
+      <div class="form-group">
+        <label for="username">Username (required)</label>
+        <input id="username" class="form-control" type="text" name="username" value="{{ session.passport.user.username }}" placeholder="Username (required)">
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input id="location" class="form-control" type="text" name="location" value="{{ session.passport.user.location }}" placeholder="Location">
+      </div>
+      <div class="form-group">
+        <label for="language">Language</label>
+        <select class="form-control" name="language" id="language">
+          <!-- Load in user's language choice -->
+          <script type="text/javascript">
+            var language = '{{ session.passport.user.language}}'
+          </script>
+          <!-- Language option is selected via jQuery in js/script.js file -->
+          <option id="English">English</option>
+          <option id="Español">Español</option>
+          <option id="Français">Français</option>
+          <option id="Português">Português</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="aboutMe">About Me</label>
+        <textarea class="form-control" id="aboutMe" name="aboutMe" rows="4" placeholder="About Me">{{ session.passport.user.aboutMe }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input id="website" class="form-control" type="text" name="website" value="{{ session.passport.user.website }}"  placeholder="Website">
+      </div>
+      <div class="form-group">
+        <label for="gitHub">GitHub</label>
+        <input id="gitHub" class="form-control" type="text" name="gitHub" value="{{ session.passport.user.gitHub }}"  placeholder="GitHub">
+      </div>
+      <div class="form-group">
+        <label for="twitter">Twitter</label>
+        <input id="twitter" class="form-control" type="text" name="twitter" value="{{ session.passport.user.twitter }}"  placeholder="Twitter">
+      </div>
+      <div class="form-group">
+        <label for="linkedInUrl">LinkedIn Url</label>
+        <input id="linkedInUrl" class="form-control" type="text" name="linkedInUrl" value="{{ session.passport.user.linkedinURL }}"  placeholder="LinkedIn Url">
+      </div>
+      <div class="form-group">
+        <label for="linkedinUrl">Profile Picture</label><br>
+        <img src="{{ absolutePath }}/{{ session.passport.user.profilePicture }}">
+        <input type="file" class="form-control-file" id="linkedinUrl" name="linkedinUrl" aria-describedby="fileHelp">
+      </div>
+      <div class="form-check">
+        <label>Who can view my profile</label><br>
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+          Codecademy Users
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          Everyone
+        </label>
+      </div>
+      <button type="submit" class="btn btn-danger">UPDATE PROFILE</button>
+    </form>
+  </div>
+</div>

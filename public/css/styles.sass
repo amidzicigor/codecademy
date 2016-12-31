@@ -166,6 +166,7 @@ body
       .story
         color: $textColor
         background-color: #fff
+        height: 455px
         padding: 63px 30px 50px 30px
         margin-bottom: 15px
         &:hover
@@ -206,11 +207,6 @@ body
       p
         font-size: 16px
         color: $otherTextColor
-
-@media only screen and (max-device-width: 576px)
-  *
-    background-color: orange
-
 
 
 .header-title
@@ -299,7 +295,7 @@ body
           color: rgb(67, 84, 141)
     .ToS
       color: $textColor
-      font-size: 13.5px
+      font-size: 18px
       text-align: center
     .socialLogin
       text-align: center
@@ -386,3 +382,68 @@ body
         color: #fff
       &:active
         outline: none
+
+.accountPage
+  .loggedInNavbar
+    .content
+      max-width: 960px
+  .mainContent
+    max-width: 960px
+    padding-bottom: 80px
+    .pageTitle
+      padding-bottom: 60px
+      h1
+        font-size: 41px
+        color: $textColor
+    .userInfo
+      h3
+        font-size: 28px
+      ul
+        padding-left: 0px
+        padding-right: 30px
+        padding-bottom: 50px
+        #li1
+          background-color: #fff
+        li
+          list-style-type: none
+          padding-left: 10px
+          h5
+            padding: 9px 0px 9px 0px
+          a
+            color: $textColor
+            text-decoration: none
+            font-size: 20px
+  .forms
+    background-color: #fff
+    margin-top: 10px
+    padding-bottom: 20px
+    label
+      font-weight: normal
+      font-size: 17px
+    input[type=text], input[type=password], select
+      box-shadow: 0px 0px
+      border-radius: 0px
+      color: $textColor
+      height: 50px
+      border: 1px solid #9f9fa0
+      font-size: 17px
+    textarea
+      border-radius: 0px
+      color: $textColor
+      border: 1px solid #9f9fa0
+      font-size: 16px
+      box-shadow: 0px 0px
+    img
+      max-width: 120px
+      margin-bottom: 5px
+
+#exactCopy
+  font-size: 19px
+  color: #ff0000
+
+.validationErrors
+  margin-top: -10px
+  margin-bottom: 10px
+  text-align: center
+  font-size: 15px
+  color: #ff0000

@@ -22,4 +22,14 @@ $(document).ready(function () {
       }
     });
   });
+
+  // Functino for changing to exact replica
+  $('#exactCopy').click(function () {
+    $('#mainPageGrabber').text('Learn to code interactively, for free.');
+    $('.ToS').html('By signing up, you agree to our <a href="#">Terms of service</a>');
+    $('.ToS').css('font-size', '13.5px');
+  })
+
+  // Setting language default for account page
+  $(`#${language}`).attr('selected', 'selected');
 })
