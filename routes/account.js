@@ -43,10 +43,13 @@ router.get('/delete_acct', function(req, res, next) {
 // ------------------------------- UPDATES ---------------------------------- //
 // ------------------------------ Basic info -------------------------------- //
 router.post('/user-update', function (req, res, next) {
+  var messages = [];
+  var errors = 0;
+
   var updateData = {
     name: req.body.name || null,
-    email: req.body.email || req.session.user.email, // cannot be null
-    username: req.body.username || req.session.user.username, // cannot be null
+    email: req.body.email, // cannot be null
+    username: req.body.username, // cannot be null
     location: req.body.location || null,
     language: req.body.language || null,
     aboutMe: req.body.aboutMe || null,
@@ -56,19 +59,81 @@ router.post('/user-update', function (req, res, next) {
     linkedinURL: req.body.linkedinURL || null
   }
 
-  User.findByIdAndUpdate(req.session.passport.user._id, {$set: updateData}, function (err, user) {
-    User.findById(req.session.passport.user._id, function (err, user) {
-      if (!err) {
-        console.log('All good');
-      }
-      console.log(user);
-      req.login(user, function(err) {
-          if (err) return next(err)
-      })
-      res.end();
+  // Check if either email or username fields are empty
+  if (req.body.email === '') {
+    messages.push('Email cannot be blank.');
+    req.flash('error', messages);
+    errors += 1;
+    res.redirect('/account');
+  }
+  if (errors === 0) {
+    if (req.body.username === '') {
+      messages.push('Username is not valid. Make sure you picked a username with only letters and numbers.');
+      req.flash('error', messages);
+      errors += 1;
       res.redirect('/account');
+    }
+  }
+
+  if (errors === 0) {
+    // Check if new email is already taken
+    User.findOne({email: req.body.email}, function (err, user) {
+      if (err) {
+        messages.push('Unexpected error occured. Please relog and try again.');
+        req.flash('error', messages);
+        errors += 1;
+        res.redirect('/account');
+      }
+      if (user) {
+        if (user._id != req.session.passport.user._id) {
+          console.log(user._id)
+          console.log(req.session.passport.user._id)
+          messages.push('That email is already taken.');
+          req.flash('error', messages);
+          errors += 1;
+          res.redirect('/account');
+        }
+      }
+
+      if (errors === 0) {
+        // Check if new username is already taken
+        User.findOne({username: req.body.username}, function (err, user) {
+          console.log(user);
+          if (err && errors === 0) {
+            messages.push('Unexpected error occured. Please relog and try again.');
+            req.flash('error', messages);
+            errors += 1;
+            res.redirect('/account');
+          }
+          if (user) {
+            if (user._id != req.session.passport.user._id && errors === 0) {
+              messages.push('That username is already taken.');
+              req.flash('error', messages);
+              errors += 1;
+              res.redirect('/account');
+            }
+          }
+
+          if (errors === 0) {
+            // If no errors, update user data
+            User.findByIdAndUpdate(req.session.passport.user._id, {$set: updateData}, function (err, user) {
+              User.findById(req.session.passport.user._id, function (err, user) {
+                if (!err && errors === 0) {
+                  console.log('All good');
+                }
+                console.log(user);
+                req.login(user, function(err) {
+                    if (err) return res.redirect('/account')
+                })
+                res.end();
+                res.redirect('/account');
+              })
+            })
+          }
+        })
+      }
     })
-  })
+  }
 });
 
 // ------------------------------- Password --------------------------------- //

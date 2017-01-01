@@ -53,7 +53,11 @@ app.use(passport.session());
 
 // Set absolutePath for static files
 app.use(function (req, res, next) {
-  res.locals.absolutePath = 'http://localhost:3000';
+  if (process.env.PORT) {
+    res.locals.absolutePath = 'https://shielded-atoll-34654.herokuapp.com/';
+  } else {
+    res.locals.absolutePath = 'http://localhost:3000';
+  }
   res.locals.session = req.session;
   next();
 })
