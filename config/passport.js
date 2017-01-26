@@ -66,7 +66,6 @@ passport.use('local.login', new LocalStrategy({
   passReqToCallback: true
 },
 function (req, emailOrUsername, password, done) {
-  console.log
   User.findOne({$or:[{'username': emailOrUsername}, {'email': emailOrUsername}]}, function (err, user) {
     if (err) {
       return done(err);

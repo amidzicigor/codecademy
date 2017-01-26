@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 /* GET password page. */
 router.get('/password', function(req, res, next) {
   var messages = req.flash('error');
-  res.render('account/password', { messages: messages, hasErrors: messages.length > 0});
+  res.render('account/password', { messages: messages, hasErrors: messages});
 });
 
 /* GET mail_settings page. */
@@ -138,16 +138,17 @@ router.post('/user-update', function (req, res, next) {
 
 // ------------------------------- Password --------------------------------- //
 router.post('/password-update', function (req, res, next) {
+  // Find current logged in user by id
   User.findById(req.session.passport.user._id, function (err, user) {
     var messages = [];
     if (err) {
       messages.push('Something went wrong.');
       req.flash('error', messages);
-      res.redirect('/account/password');
+      return res.redirect('/account/password');
     } else if (!user) {
       messages.push('Please relog and try again.');
       req.flash('error', messages);
-      res.redirect('/account/password');
+      return res.redirect('/account/password');
     } else if (!user.validPassword(req.body.currentPassword)) {
       messages.push('Incorrect password');
     }

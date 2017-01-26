@@ -14,8 +14,6 @@ var fs                  = require('fs');
 var Grid                = require('gridfs-stream')
 var MongoStore          = require('connect-mongo')(session);
 
-Grid.mongo = mongoose.mongo;
-
 var routes = require('./routes/index');
 var accountRoutes = require('./routes/account');
 
